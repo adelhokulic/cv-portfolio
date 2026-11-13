@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 
 function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
-
 	const navbar__toggle = () => {
 		if (isOpen) setIsOpen(false);
 		if (!isOpen) setIsOpen(true);
 	};
-
+	const { theme, toggleTheme } = useTheme();
 	return (
 		<header className="navbar">
 			<div className="navbar__inner">
@@ -66,8 +66,12 @@ function Navbar() {
 						Kontakt
 					</NavLink>
 
-					<button className="theme-toggle" aria-label="Theme wechseln">
-						🌙
+					<button
+						onClick={() => toggleTheme()}
+						className="theme-toggle"
+						aria-label="Theme wechseln"
+					>
+						{theme === "light" ? "🌙" : "☀️"}
 					</button>
 				</nav>
 			</div>
