@@ -11,6 +11,8 @@
   --accent: #2f6fed;
   --accent-contrast: #ffffff;
   --shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  --error: #d93025;
+  --success: #1e8e3e;
 
   --radius: 12px;
   --nav-height: 64px;
@@ -26,6 +28,8 @@
   --accent: #6b9bff;
   --accent-contrast: #0d0d0f;
   --shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  --error: #f28b82;
+  --success: #34a853;
 }
 
 /* ===== Base ===== */

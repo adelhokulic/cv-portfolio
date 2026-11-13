@@ -611,3 +611,169 @@
 	font-size: 0.9rem;
 	color: var(--text);
 }
+
+/* ===== Contact page: info on the side, form next to it on desktop ===== */
+.contact__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 32px;
+}
+
+@media (min-width: 900px) {
+	.contact__grid {
+		grid-template-columns: 1fr 2fr;
+		gap: 48px;
+	}
+}
+
+.contact__info {
+	align-self: start;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 24px;
+	background: var(--bg-elevated);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+}
+
+.contact__info-item {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+/* Small grey label above each info value */
+.contact__info-label {
+	color: var(--text-muted);
+	font-size: 0.8rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+/* ===== Form ===== */
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 24px;
+	background: var(--bg-elevated);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+}
+
+.form__group {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.form__label {
+	font-weight: 600;
+	font-size: 0.95rem;
+}
+
+.form__input {
+	width: 100%;
+	padding: 12px 14px;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	background: var(--bg);
+	color: var(--text);
+	font: inherit;
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+.form__input::placeholder {
+	color: var(--text-muted);
+	opacity: 0.7;
+}
+
+.form__input:focus {
+	outline: none;
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.form__textarea {
+	resize: vertical;
+	min-height: 140px;
+}
+
+/* Red border when the field has a validation error */
+.form__input--error,
+.form__input--error:focus {
+	border-color: var(--error);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--error) 20%, transparent);
+}
+
+.form__error {
+	margin: 0;
+	color: var(--error);
+	font-size: 0.85rem;
+}
+
+/* Full-width button on mobile, normal width on larger screens */
+.form__submit {
+	width: 100%;
+}
+
+@media (min-width: 640px) {
+	.form__submit {
+		width: auto;
+		align-self: flex-start;
+	}
+}
+
+/* ===== Success message (shown instead of the form after sending) ===== */
+.success {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+	padding: 48px 24px;
+	text-align: center;
+	background: var(--bg-elevated);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	animation: fade-in 0.4s ease;
+}
+
+.success__icon {
+	width: 56px;
+	height: 56px;
+	display: grid;
+	place-items: center;
+	border-radius: 50%;
+	background: var(--success);
+	color: #ffffff;
+	font-size: 1.6rem;
+	font-weight: 700;
+}
+
+.success__title {
+	margin: 0;
+	font-size: 1.5rem;
+}
+
+.success__text {
+	margin: 0;
+	max-width: 40ch;
+	color: var(--text-muted);
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

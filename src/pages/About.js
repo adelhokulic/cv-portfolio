@@ -29,7 +29,8 @@ function About() {
 				<div className="about__text">
 					<p className="about__lead">
 						Ich komme aus Bosnien und Herzegowina, einem Land, in dem sich Ost
-						und West seit Jahrhunderten begegnen. Vielleicht verbinde ich
+						und West seit Jahrhunderten begegnen, und lebe heute in Berlin,
+						einer Stadt, die sich ständig neu erfindet. Vielleicht verbinde ich
 						deshalb so gern Dinge: Design und Logik, Idee und Code.
 					</p>
 					<p>

@@ -16,8 +16,9 @@ function Home() {
 				</h1>
 				<p className="hero__role">Junior Frontend Developer</p>
 				<p className="hero__text">
-					Aus Bosnien und Herzegowina. Ich baue schnelle, responsive
-					React-Anwendungen mit sauberem State-Management und echten APIs.
+					Ursprünglich aus Bosnien und Herzegowina, heute in Berlin zu Hause.
+					Ich baue schnelle, responsive React-Anwendungen mit sauberem
+					State-Management und echten APIs.
 				</p>
 
 				<div className="hero__actions">
