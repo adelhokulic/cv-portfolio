@@ -1,0 +1,74 @@
+[
+	{
+		"title": "Web Shop",
+		"slug": "web-shop",
+		"description": "Responsiver Online-Shop mit Produkten aus der DummyJSON API. Der Warenkorb ist globaler State mit Context API und useReducer und bleibt auch nach einem Neuladen der Seite erhalten.",
+		"highlights": [
+			"Ein Reducer steuert jede Änderung am Warenkorb, Komponenten lesen den State über eigene Hooks statt über Prop Drilling",
+			"Währungsumrechner (USD, EUR, RSD), der alle Preise in der App sofort aktualisiert",
+			"Gutscheincodes, Gratisversand ab einem Mindestbetrag und Fortschrittsbalken bis zum Gratisversand",
+			"Summen, Rabatt und Versandkosten werden aus dem Warenkorb berechnet, statt doppelt gespeichert zu werden"
+		],
+		"technologies": [
+			"React",
+			"React Router",
+			"Context API",
+			"Axios",
+			"REST API",
+			"localStorage",
+			"CSS"
+		],
+		"image": "/images/web-shop.png",
+		"github": "https://github.com/adelhokulic/web-shop",
+		"demo": "https://web-shop-lilac-omega.vercel.app/",
+		"featured": true
+	},
+	{
+		"title": "Open Library",
+		"slug": "open-library",
+		"description": "Buchsuche mit der freien Open Library API. Bücher lassen sich nach Titel, Autor oder ISBN suchen und nach Sprache filtern, mit eigenen Detailseiten für Bücher und Autoren.",
+		"highlights": [
+			"Suche nach Titel, Autor oder ISBN mit Sprachfilter und Seitennavigation",
+			"Detailseiten für Bücher (Cover, Beschreibung, Themen) und Autoren (Biografie, Werke)",
+			"Themen über teilbare URLs durchsuchen",
+			"Durchdachte Zustände: Ladeanzeige, Fehlermeldungen, leere Ergebnisse und Ersatz für fehlende Cover"
+		],
+		"technologies": ["React", "React Router", "Axios", "REST API", "Bootstrap"],
+		"image": "/images/open-library.png",
+		"github": "https://github.com/adelhokulic/open-library",
+		"demo": "https://open-library-lime.vercel.app",
+		"featured": true
+	},
+	{
+		"title": "Music Catalog",
+		"slug": "music-catalog",
+		"description": "Musikkatalog mit 25 Alben, 15 Künstlern und 125 Songs. Eine einzige Suche findet Alben, Künstler und Songs, und Favoriten bleiben auch nach dem nächsten Besuch gespeichert.",
+		"highlights": [
+			"Gemeinsame Suche über Albumtitel, Künstler und Songtitel direkt beim Tippen",
+			"Genre-Filter, der aus den Daten erzeugt wird und mit der Suche kombiniert werden kann",
+			"Sortierung nach Erscheinungsjahr oder Titel",
+			"Albumseiten mit Tracklist und automatisch berechneter Gesamtspielzeit, Künstlerseiten mit Diskografie"
+		],
+		"technologies": ["React", "React Router", "localStorage", "CSS"],
+		"image": "/images/music-catalog.png",
+		"github": "https://github.com/adelhokulic/music-catalog",
+		"demo": "https://music-catalog-eosin.vercel.app",
+		"featured": true
+	},
+	{
+		"title": "Kalorienzähler",
+		"slug": "brojac-kalorija",
+		"description": "App zum Erfassen der täglichen Ernährung. Man legt ein Kalorienziel fest, trägt Mahlzeiten mit Makronährstoffen ein und sieht den Fortschritt sofort.",
+		"highlights": [
+			"Formular mit Validierung und klaren Fehlermeldungen",
+			"Schnelles Hinzufügen von 10 häufigen Lebensmitteln mit einem Klick",
+			"Tageszusammenfassung mit Fortschrittsbalken und Aufteilung nach Mahlzeit und Makronährstoffen",
+			"Nur zwei Werte im State, alle Summen werden daraus berechnet und können nie auseinanderlaufen"
+		],
+		"technologies": ["React", "CSS"],
+		"image": "/images/brojac-kalorija.png",
+		"github": "https://github.com/adelhokulic/brojac-kalorija",
+		"demo": "https://calorie-counter-psi-seven.vercel.app",
+		"featured": false
+	}
+]
