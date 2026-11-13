@@ -1,4 +1,5 @@
 import ProjectCard from "./ProjectCard";
+import Reveal from "./Reveal";
 
 const ProjectList = ({ projects }) => {
 	return projects.length === 0 ? (
@@ -7,8 +8,10 @@ const ProjectList = ({ projects }) => {
 		</p>
 	) : (
 		<div className="projects-grid">
-			{projects.map((project) => (
-				<ProjectCard key={project.slug} project={project} />
+			{projects.map((project, index) => (
+				<Reveal delay={index * 100} key={project.slug}>
+					<ProjectCard project={project} />
+				</Reveal>
 			))}
 		</div>
 	);

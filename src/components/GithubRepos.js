@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RepoCard from "./RepoCard";
 import axios from "axios";
+import Reveal from "./Reveal";
 
 const GITHUB_API_URL =
 	"https://api.github.com/users/adelhokulic/repos?sort=updated&per_page=6";
@@ -59,9 +60,11 @@ const GithubRepos = () => {
 			)}
 			{!isLoading && !errorMessage && (
 				<div className="repos-grid">
-					{repos.map((repo) => {
-						return <RepoCard key={repo.id} repo={repo} />;
-					})}
+					{repos.map((repo, index) => (
+						<Reveal delay={index * 100} key={repo.id}>
+							<RepoCard repo={repo} />
+						</Reveal>
+					))}
 				</div>
 			)}
 		</section>
