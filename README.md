@@ -2,7 +2,7 @@
 
 My personal portfolio website, built with React. It presents who I am, the projects I have built, and a way to get in touch. The site content is in German, as I live in Berlin and am looking for my first role as a Junior Frontend Developer in Germany.
 
-**Live site:** [cv-portfolio-ruby-phi.vercel.app](https://cv-portfolio-ruby-phi.vercel.app)
+**Live site:** [adelhokulic.de](https://adelhokulic.de)
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
 ![React Router](https://img.shields.io/badge/React_Router-7-CA4245?logo=reactrouter&logoColor=white)
@@ -39,6 +39,16 @@ Built as a project in the ITMentorstva frontend mentorship program.
 - Whitespace-only input is rejected (`trim`)
 - After a successful submit, the form is replaced with a personal thank-you message (no data is actually sent)
 
+**Latest GitHub repositories**
+- The projects page loads my most recently updated repositories live from the public GitHub API
+- Forks are filtered out, and loading and error states are handled
+- Requests are cancelled with `AbortController` when the component unmounts
+
+**Scroll animations**
+- Sections and cards fade in when they scroll into view, using `IntersectionObserver` in a reusable `Reveal` component
+- Cards in a grid appear one after another with a small delay
+- Animations are turned off for users who enable "Reduce motion" in their system settings
+
 **Responsive design**
 - Mobile-first CSS with Grid and Flexbox, no UI framework
 - Hamburger menu on small screens that closes after navigation
@@ -52,10 +62,10 @@ Built as a project in the ITMentorstva frontend mentorship program.
 | Routing | React Router 7 |
 | Global state | Context API (`createContext`, `useContext`, custom hook) |
 | Persistence | Browser `localStorage` |
-| Data | Local JSON file |
+| Data | Local JSON file, public GitHub REST API with Axios |
 | Styling | CSS with custom properties, Grid, Flexbox and BEM-style class names |
 | Tooling | Create React App, ESLint, Prettier, Git |
-| Hosting | Vercel with automatic deployments from GitHub |
+| Hosting | Vercel with automatic deployments from GitHub, custom domain with HTTPS |
 
 ## Routes
 
@@ -75,7 +85,10 @@ src/
 ├── components/
 │   ├── Navbar.js          # Navigation, mobile menu and theme toggle
 │   ├── ProjectCard.js     # One project as a card
-│   └── ProjectList.js     # Grid of cards, or an empty state
+│   ├── ProjectList.js     # Grid of cards, or an empty state
+│   ├── GithubRepos.js     # Latest repositories from the GitHub API
+│   ├── RepoCard.js        # One repository as a card
+│   └── Reveal.js          # Fade-in animation when scrolled into view
 ├── context/
 │   └── ThemeContext.js    # ThemeProvider and useTheme hook
 ├── data/
@@ -159,10 +172,11 @@ The app runs at [http://localhost:3000](http://localhost:3000).
 
 ## Deployment
 
-The site is hosted on [Vercel](https://vercel.com) and connected to this GitHub repository:
+The site is hosted on [Vercel](https://vercel.com) under the custom domain [adelhokulic.de](https://adelhokulic.de) and connected to this GitHub repository:
 
 - Every push to `main` automatically triggers a new build and deployment
 - Vercel builds with `CI=true`, so ESLint warnings fail the build. The code is kept warning-free.
+- The domain points to Vercel through an A record (apex) and a CNAME record (`www`, redirected to the apex domain). Vercel issues the SSL certificate automatically.
 - A rewrite rule in `vercel.json` sends every route to `index.html`, so opening a subpage directly (e.g. `/projects/web-shop`) or refreshing it does not return a 404
 
 ## What I Learned
@@ -173,13 +187,14 @@ The site is hosted on [Vercel](https://vercel.com) and connected to this GitHub 
 - Deriving values from state instead of storing them twice
 - Building reusable components that work in more than one place
 - Writing controlled forms with validation through state
+- Fetching data from a public API with loading, error and cancellation handling
+- Using the `IntersectionObserver` API with `useRef` for scroll animations
 - Deploying a React app to Vercel, setting up automatic deployments and reading build logs
+- Connecting a custom domain through DNS records
 
 ## Possible Improvements
 
-- Show my latest repositories through the public GitHub API
-- Scroll animations
-- A custom domain
+- English version with a language switch (DE / EN)
 - Tests with React Testing Library
 - Migration to TypeScript
 
