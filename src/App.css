@@ -777,3 +777,72 @@
 		transform: translateY(0);
 	}
 }
+
+/* ===== Space between sections on the home page ===== */
+.section + .section,
+.section + .cta {
+	margin-top: 72px;
+}
+
+/* ===== About teaser on the home page (short text + link to the about page) ===== */
+.about-teaser {
+	padding: 32px 24px;
+	background: var(--bg-elevated);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+}
+
+.about-teaser__text {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 12px;
+}
+
+.about-teaser__text p {
+	margin: 0;
+	max-width: 60ch;
+	color: var(--text-muted);
+	font-size: 1.05rem;
+}
+
+@media (min-width: 900px) {
+	.about-teaser {
+		padding: 40px;
+	}
+}
+
+/* ===== Call to action: blue box with a contact button ===== */
+.cta {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+	padding: 48px 24px;
+	text-align: center;
+	background: var(--accent);
+	color: var(--accent-contrast);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+}
+
+.cta__title {
+	margin: 0;
+	font-size: clamp(1.6rem, 5vw, 2.2rem);
+}
+
+.cta__text {
+	margin: 0 0 12px;
+	max-width: 50ch;
+	opacity: 0.9;
+}
+
+/* Inverted button: background and text colors swapped so it stands out on the blue box */
+.cta__btn {
+	background: var(--accent-contrast);
+	color: var(--accent);
+}
+
+.cta__btn:hover {
+	opacity: 0.9;
+}

@@ -41,6 +41,31 @@ function Home() {
 
 				<ProjectList projects={featuredProjects} />
 			</section>
+
+			<section className="section about-teaser">
+				<div className="about-teaser__text">
+					<h2 className="section__title">Über mich</h2>
+					<p>
+						Aufgewachsen in Bosnien und Herzegowina, angekommen in Berlin. Ich verbinde gern
+						Design und Logik und lerne jeden Tag dazu, von HTML und CSS bis zu React, Next.js
+						und Firebase.
+					</p>
+					<Link to="/about" className="section__link">
+						Mehr über mich →
+					</Link>
+				</div>
+			</section>
+
+			<section className="cta">
+				<h2 className="cta__title">Lass uns sprechen!</h2>
+				<p className="cta__text">
+					Du suchst einen motivierten Junior Frontend Developer in Berlin oder remote? Ich freue
+					mich auf deine Nachricht.
+				</p>
+				<Link to="/contact" className="btn btn--large cta__btn">
+					Kontakt aufnehmen
+				</Link>
+			</section>
 		</>
 	);
 }
