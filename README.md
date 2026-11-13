@@ -1,70 +1,189 @@
-# Getting Started with Create React App
+# Portfolio – Adel Hokulić
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My personal portfolio website, built with React. It presents who I am, the projects I have built, and a way to get in touch. The site content is in German, as I live in Berlin and am looking for my first role as a Junior Frontend Developer in Germany.
 
-## Available Scripts
+**Live site:** [cv-portfolio-ruby-phi.vercel.app](https://cv-portfolio-ruby-phi.vercel.app)
 
-In the project directory, you can run:
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-7-CA4245?logo=reactrouter&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)
+![CSS](https://img.shields.io/badge/CSS-Grid_%26_Flexbox-1572B6?logo=css&logoColor=white)
+![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?logo=vercel&logoColor=white)
 
-### `npm start`
+Built as a project in the ITMentorstva frontend mentorship program.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Pages**
+- **Home** – introduction and a selection of featured projects
+- **Projects** – all projects with a technology filter
+- **Project details** – description, key features, technologies and links to the code and the live demo (`/projects/:slug`)
+- **About** – a short story and a list of skills
+- **Contact** – a contact form with validation
+- **404 pages** – a custom page for unknown routes and a separate message for unknown projects, both with a link back
 
-### `npm test`
+**Projects from JSON**
+- All project data lives in one file, [`src/data/projects.json`](src/data/projects.json)
+- The filter buttons are generated from the data, so a new technology gets its own button automatically
+- Featured projects on the home page are selected with a `featured` flag
+- The "Live demo" button is shown only when a project has a demo URL
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Dark and light theme**
+- Global theme state through React Context (`ThemeContext` with a `useTheme` hook)
+- The choice is saved in `localStorage` and restored on the next visit
+- All colors are CSS custom properties, so switching the theme only changes one attribute on `<html>`
 
-### `npm run build`
+**Contact form**
+- Controlled inputs for name, email and message
+- Validation through React state, with an error message under each field and a red border on invalid fields
+- Whitespace-only input is rejected (`trim`)
+- After a successful submit, the form is replaced with a personal thank-you message (no data is actually sent)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Responsive design**
+- Mobile-first CSS with Grid and Flexbox, no UI framework
+- Hamburger menu on small screens that closes after navigation
+- Project grid with 1, 2 or 3 columns depending on the screen width
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Area | Technology |
+| --- | --- |
+| UI | React 19 (function components and hooks) |
+| Routing | React Router 7 |
+| Global state | Context API (`createContext`, `useContext`, custom hook) |
+| Persistence | Browser `localStorage` |
+| Data | Local JSON file |
+| Styling | CSS with custom properties, Grid, Flexbox and BEM-style class names |
+| Tooling | Create React App, ESLint, Prettier, Git |
+| Hosting | Vercel with automatic deployments from GitHub |
 
-### `npm run eject`
+## Routes
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Path | Page |
+| --- | --- |
+| `/` | Home |
+| `/projects` | All projects with the technology filter |
+| `/projects/:slug` | Details of one project |
+| `/about` | About me |
+| `/contact` | Contact form |
+| `*` | "Page not found" |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```text
+src/
+├── components/
+│   ├── Navbar.js          # Navigation, mobile menu and theme toggle
+│   ├── ProjectCard.js     # One project as a card
+│   └── ProjectList.js     # Grid of cards, or an empty state
+├── context/
+│   └── ThemeContext.js    # ThemeProvider and useTheme hook
+├── data/
+│   └── projects.json      # All project data
+├── pages/
+│   ├── Home.js
+│   ├── Projects.js
+│   ├── ProjectDetail.js
+│   ├── About.js
+│   ├── Contact.js
+│   └── NotFound.js
+├── App.js                 # Routes
+├── App.css                # Component and page styles
+└── index.css              # Theme colors and base styles
+public/
+└── images/                # Project screenshots
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## How It Works
 
-## Learn More
+### Technology filter
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The list of technologies is built from the project data instead of being written by hand. The selected technology is the only piece of state; the filtered list is calculated from it on every render, so it can never get out of sync:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```js
+const filteredProjects =
+	selectedTechnology === "Alle"
+		? projects
+		: projects.filter((project) => project.technologies.includes(selectedTechnology));
+```
 
-### Code Splitting
+`ProjectList` does not know anything about the filter. It only renders the projects it receives, which is why the same component is reused on the home page for the featured projects.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Theme
 
-### Analyzing the Bundle Size
+`ThemeProvider` reads the saved theme from `localStorage` once, with a lazy initial value in `useState`. A `useEffect` then writes every change to the `data-theme` attribute on `<html>` and back to `localStorage`. The CSS defines the colors for `[data-theme="dark"]`, so no component needs its own dark styles.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Contact form validation
 
-### Making a Progressive Web App
+On submit, each field is checked and its error message is stored in state. A local `isValid` flag decides whether the form was sent. This avoids reading state right after setting it, as the new state value is only available in the next render.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Adding a Project
 
-### Advanced Configuration
+Add an object to [`src/data/projects.json`](src/data/projects.json) and a screenshot to `public/images/`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```json
+{
+	"title": "Project name",
+	"slug": "project-name",
+	"description": "Two sentences shown on the card and the detail page.",
+	"highlights": ["Key feature one", "Key feature two"],
+	"technologies": ["React", "CSS"],
+	"image": "/images/project-name.png",
+	"github": "https://github.com/adelhokulic/project-name",
+	"demo": "https://project-name.vercel.app",
+	"featured": false
+}
+```
 
-### Deployment
+- `slug` becomes the URL: `/projects/project-name`
+- Use the exact spelling of existing technologies (e.g. `Axios`, not `axios`), otherwise the filter shows two buttons
+- Leave `demo` as an empty string `""` if there is no live version yet
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Getting Started
 
-### `npm run build` fails to minify
+**Requirements:** Node.js 18+ and npm.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+git clone https://github.com/adelhokulic/cv-portfolio.git
+cd cv-portfolio
+npm install
+npm start
+```
+
+The app runs at [http://localhost:3000](http://localhost:3000).
+
+| Command | Description |
+| --- | --- |
+| `npm start` | Runs the app in development mode |
+| `npm run build` | Creates a production build in `build/` |
+
+## Deployment
+
+The site is hosted on [Vercel](https://vercel.com) and connected to this GitHub repository:
+
+- Every push to `main` automatically triggers a new build and deployment
+- Vercel builds with `CI=true`, so ESLint warnings fail the build. The code is kept warning-free.
+- A rewrite rule in `vercel.json` sends every route to `index.html`, so opening a subpage directly (e.g. `/projects/web-shop`) or refreshing it does not return a 404
+
+## What I Learned
+
+- Building a multi-page app with React Router, including dynamic routes and a catch-all 404 route
+- Creating global state with Context and a custom hook
+- Persisting user preferences in `localStorage` with a lazy initial state
+- Deriving values from state instead of storing them twice
+- Building reusable components that work in more than one place
+- Writing controlled forms with validation through state
+- Deploying a React app to Vercel, setting up automatic deployments and reading build logs
+
+## Possible Improvements
+
+- Show my latest repositories through the public GitHub API
+- Scroll animations
+- A custom domain
+- Tests with React Testing Library
+- Migration to TypeScript
+
+## Contact
+
+- GitHub: [github.com/adelhokulic](https://github.com/adelhokulic)
+- Location: Berlin, Germany
