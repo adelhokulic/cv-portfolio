@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./context/ThemeContext";
 
-function App() {
+const App = () => {
 	return (
 		<ThemeProvider>
 			<BrowserRouter>
@@ -27,6 +27,6 @@ function App() {
 			</BrowserRouter>
 		</ThemeProvider>
 	);
-}
+};
 
 export default App;

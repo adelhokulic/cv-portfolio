@@ -1,6 +1,7 @@
 import projects from "../data/projects.json";
 import ProjectList from "../components/ProjectList";
 import { useState } from "react";
+import GithubRepos from "../components/GithubRepos";
 
 const Projects = () => {
 	const [selectedTechnology, setSelectedTechnology] = useState("Alle");
@@ -45,6 +46,7 @@ const Projects = () => {
 			</div>
 
 			<ProjectList projects={filteredProjects} />
+			<GithubRepos />
 		</section>
 	);
 };

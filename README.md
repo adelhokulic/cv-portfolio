@@ -1,4 +1,4 @@
-# Portfolio – Adel Hokulić
+# Portfolio – Adel Hokulic
 
 My personal portfolio website, built with React. It presents who I am, the projects I have built, and a way to get in touch. The site content is in German, as I live in Berlin and am looking for my first role as a Junior Frontend Developer in Germany.
 

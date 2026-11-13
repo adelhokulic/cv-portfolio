@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 
-function Navbar() {
+const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const navbar__toggle = () => {
 		if (isOpen) setIsOpen(false);
@@ -77,6 +77,6 @@ function Navbar() {
 			</div>
 		</header>
 	);
-}
+};
 
 export default Navbar;

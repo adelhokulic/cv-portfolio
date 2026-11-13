@@ -1,6 +1,6 @@
 import ProjectCard from "./ProjectCard";
 
-function ProjectList({ projects }) {
+const ProjectList = ({ projects }) => {
 	return projects.length === 0 ? (
 		<p className="empty-state">
 			Keine Projekte mit dieser Technologie gefunden.
@@ -12,6 +12,6 @@ function ProjectList({ projects }) {
 			))}
 		</div>
 	);
-}
+};
 
 export default ProjectList;

@@ -18,7 +18,7 @@ const skills = [
 	"Git & GitHub",
 ];
 
-function About() {
+const About = () => {
 	return (
 		<section className="about">
 			<header className="page-header">
@@ -65,6 +65,6 @@ function About() {
 			</div>
 		</section>
 	);
-}
+};
 
 export default About;

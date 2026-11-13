@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-function ProjectCard({ project }) {
+const ProjectCard = ({ project }) => {
 	return (
 		<article className="project-card">
 			<img
@@ -51,6 +51,6 @@ function ProjectCard({ project }) {
 			</div>
 		</article>
 	);
-}
+};
 
 export default ProjectCard;

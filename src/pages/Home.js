@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import projects from "../data/projects.json";
 import ProjectList from "../components/ProjectList";
 
-function Home() {
+const Home = () => {
 	const featuredProjects = projects.filter(
 		(project) => project.featured === true,
 	);
@@ -68,6 +68,6 @@ function Home() {
 			</section>
 		</>
 	);
-}
+};
 
 export default Home;

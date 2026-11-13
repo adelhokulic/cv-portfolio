@@ -846,3 +846,117 @@
 .cta__btn:hover {
 	opacity: 0.9;
 }
+
+/* ===== GitHub section at the bottom of the projects page ===== */
+.github {
+	margin-top: 80px;
+	padding-top: 48px;
+	border-top: 1px solid var(--border);
+}
+
+.github__intro {
+	margin: -12px 0 24px;
+	color: var(--text-muted);
+}
+
+/* Loading and error messages */
+.github__status {
+	padding: 24px 16px;
+	text-align: center;
+	color: var(--text-muted);
+	background: var(--bg-elevated);
+	border: 1px dashed var(--border);
+	border-radius: var(--radius);
+}
+
+.github__status--error {
+	color: var(--error);
+	border-color: var(--error);
+}
+
+/* ===== Repo grid: 1 column on mobile, 2 on tablet, 3 on desktop ===== */
+.repos-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 16px;
+}
+
+@media (min-width: 640px) {
+	.repos-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.repos-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+/* ===== Repo card (smaller than a project card, no image) ===== */
+.repo-card {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 20px;
+	background: var(--bg-elevated);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	transition: border-color 0.2s ease;
+}
+
+.repo-card:hover {
+	border-color: var(--accent);
+}
+
+.repo-card__name {
+	margin: 0;
+	font-size: 1.05rem;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	word-break: break-word;
+}
+
+.repo-card__description {
+	margin: 0;
+	color: var(--text-muted);
+	font-size: 0.92rem;
+}
+
+/* Long descriptions are cut after 3 lines with "…" so all cards stay similar in height */
+.repo-card__description {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
+	overflow: hidden;
+}
+
+/* Language and date in one small row */
+.repo-card__meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 16px;
+	color: var(--text-muted);
+	font-size: 0.82rem;
+}
+
+.repo-card__language {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.repo-card__dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: var(--accent);
+}
+
+/* Links stay at the bottom, even when descriptions have different lengths */
+.repo-card__links {
+	margin-top: auto;
+	padding-top: 6px;
+	display: flex;
+	gap: 8px;
+}

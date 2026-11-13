@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Contact() {
+const Contact = () => {
 	const [form, setForm] = useState({ name: "", email: "", message: "" });
 	const [isFormSent, setIsFormSent] = useState(false);
 	const [nameError, setNameError] = useState("");
@@ -133,6 +133,6 @@ function Contact() {
 			</div>
 		</section>
 	);
-}
+};
 
 export default Contact;
