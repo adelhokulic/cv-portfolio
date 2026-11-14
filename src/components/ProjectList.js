@@ -1,11 +1,12 @@
 import ProjectCard from "./ProjectCard";
 import Reveal from "./Reveal";
+import { useLanguage } from "../context/LanguageContext";
 
 const ProjectList = ({ projects }) => {
+	const { t } = useLanguage();
+
 	return projects.length === 0 ? (
-		<p className="empty-state">
-			Keine Projekte mit dieser Technologie gefunden.
-		</p>
+		<p className="empty-state">{t.projects.empty}</p>
 	) : (
 		<div className="projects-grid">
 			{projects.map((project, index) => (

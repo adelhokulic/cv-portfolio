@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
 
 const skills = [
 	"HTML",
@@ -19,39 +20,27 @@ const skills = [
 ];
 
 const About = () => {
+	const { t } = useLanguage();
+
 	return (
 		<section className="about">
 			<header className="page-header">
-				<h1 className="page-header__title">Über mich</h1>
+				<h1 className="page-header__title">{t.about.title}</h1>
 			</header>
 
 			<div className="about__content">
 				<div className="about__text">
-					<p className="about__lead">
-						Ich komme aus Bosnien und Herzegowina, einem Land, in dem sich Ost
-						und West seit Jahrhunderten begegnen, und lebe heute in Berlin,
-						einer Stadt, die sich ständig neu erfindet. Vielleicht verbinde ich
-						deshalb so gern Dinge: Design und Logik, Idee und Code.
-					</p>
-					<p>
-						Meinen Weg ins Frontend habe ich über das Mentoring-Programm
-						ITMentorstva gefunden, Schritt für Schritt von HTML und CSS bis zu
-						React, Next.js und Firebase. Am Frontend begeistert mich, dass man
-						das Ergebnis sofort sieht: Jede Zeile Code wird zu etwas, das ein
-						Mensch anklicken kann.
-					</p>
-					<p>
-						Jetzt suche ich meine erste Stelle als Junior Frontend Developer, in
-						einem Team, von dem ich lernen und dem ich etwas zurückgeben kann.
-					</p>
+					<p className="about__lead">{t.about.lead}</p>
+					<p>{t.about.text1}</p>
+					<p>{t.about.text2}</p>
 
 					<Link to="/contact" className="btn btn--primary btn--large">
-						Lass uns reden
+						{t.about.cta}
 					</Link>
 				</div>
 
 				<aside className="about__skills">
-					<h2 className="about__subtitle">Skills</h2>
+					<h2 className="about__subtitle">{t.about.skills}</h2>
 					<ul className="tags tags--large">
 						{skills.map((skill) => {
 							return (

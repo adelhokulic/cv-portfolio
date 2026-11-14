@@ -1,6 +1,6 @@
 # Portfolio – Adel Hokulic
 
-My personal portfolio website, built with React. It presents who I am, the projects I have built, and a way to get in touch. The site content is in German, as I live in Berlin and am looking for my first role as a Junior Frontend Developer in Germany.
+My personal portfolio website, built with React. It presents who I am, the projects I have built, and a way to get in touch. The site is available in German (default) and English, as I live in Berlin and am looking for my first role as a Junior Frontend Developer in Germany.
 
 **Live site:** [adelhokulic.de](https://adelhokulic.de)
 
@@ -27,6 +27,12 @@ Built as a project in the ITMentorstva frontend mentorship program.
 - The filter buttons are generated from the data, so a new technology gets its own button automatically
 - Featured projects on the home page are selected with a `featured` flag
 - The "Live demo" button is shown only when a project has a demo URL
+
+**German and English**
+- Language switch (DE / EN) in the navbar, German by default
+- All texts live in one file, [`src/data/translations.js`](src/data/translations.js), and are provided through `LanguageContext`
+- The choice is saved in `localStorage`, and the `lang` attribute on `<html>` follows the selected language
+- Form errors store a translation key instead of a text, so they switch language together with the page
 
 **Dark and light theme**
 - Global theme state through React Context (`ThemeContext` with a `useTheme` hook)
@@ -90,9 +96,11 @@ src/
 │   ├── RepoCard.js        # One repository as a card
 │   └── Reveal.js          # Fade-in animation when scrolled into view
 ├── context/
+│   ├── LanguageContext.js # LanguageProvider and useLanguage hook
 │   └── ThemeContext.js    # ThemeProvider and useTheme hook
 ├── data/
-│   └── projects.json      # All project data
+│   ├── projects.json      # All project data (descriptions in DE and EN)
+│   └── translations.js    # All texts of the site in DE and EN
 ├── pages/
 │   ├── Home.js
 │   ├── Projects.js
@@ -138,8 +146,14 @@ Add an object to [`src/data/projects.json`](src/data/projects.json) and a screen
 {
 	"title": "Project name",
 	"slug": "project-name",
-	"description": "Two sentences shown on the card and the detail page.",
-	"highlights": ["Key feature one", "Key feature two"],
+	"description": {
+		"de": "Zwei Sätze für die Karte und die Detailseite.",
+		"en": "Two sentences shown on the card and the detail page."
+	},
+	"highlights": {
+		"de": ["Wichtige Funktion eins", "Wichtige Funktion zwei"],
+		"en": ["Key feature one", "Key feature two"]
+	},
 	"technologies": ["React", "CSS"],
 	"image": "/images/project-name.png",
 	"github": "https://github.com/adelhokulic/project-name",
@@ -188,13 +202,13 @@ The site is hosted on [Vercel](https://vercel.com) under the custom domain [adel
 - Building reusable components that work in more than one place
 - Writing controlled forms with validation through state
 - Fetching data from a public API with loading, error and cancellation handling
+- Building a multilingual site with Context and a translations object
 - Using the `IntersectionObserver` API with `useRef` for scroll animations
 - Deploying a React app to Vercel, setting up automatic deployments and reading build logs
 - Connecting a custom domain through DNS records
 
 ## Possible Improvements
 
-- English version with a language switch (DE / EN)
 - Tests with React Testing Library
 - Migration to TypeScript
 

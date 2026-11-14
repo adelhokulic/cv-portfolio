@@ -2,14 +2,17 @@ import { useEffect, useState } from "react";
 import RepoCard from "./RepoCard";
 import axios from "axios";
 import Reveal from "./Reveal";
+import { useLanguage } from "../context/LanguageContext";
 
 const GITHUB_API_URL =
 	"https://api.github.com/users/adelhokulic/repos?sort=updated&per_page=6";
 
 const GithubRepos = () => {
+	const { t } = useLanguage();
 	const [repos, setRepos] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-	const [errorMessage, setErrorMessage] = useState("");
+	// true/false instead of a text, so the error message follows the selected language
+	const [hasError, setHasError] = useState(false);
 
 	useEffect(() => {
 		const controller = new AbortController();
@@ -23,7 +26,7 @@ const GithubRepos = () => {
 				setRepos(data.filter((repo) => repo.fork === false));
 			} catch (error) {
 				if (axios.isCancel(error)) return;
-				setErrorMessage("GitHub-Repositories konnten nicht geladen werden.");
+				setHasError(true);
 			}
 			setIsLoading(false);
 		};
@@ -36,29 +39,25 @@ const GithubRepos = () => {
 	return (
 		<section className="section github">
 			<div className="section__header">
-				<h2 className="section__title">Neu auf GitHub</h2>
+				<h2 className="section__title">{t.github.title}</h2>
 				<a
 					href="https://github.com/adelhokulic?tab=repositories"
 					className="section__link"
 					target="_blank"
 					rel="noreferrer"
 				>
-					Alle Repositories →
+					{t.github.allRepos}
 				</a>
 			</div>
-			<p className="github__intro">
-				Woran ich gerade arbeite, automatisch geladen über die GitHub API.
-			</p>
+			<p className="github__intro">{t.github.intro}</p>
 
-			{isLoading && (
-				<p className="github__status">Repositories werden geladen…</p>
-			)}
-			{errorMessage && (
+			{isLoading && <p className="github__status">{t.github.loading}</p>}
+			{hasError && (
 				<p className="github__status github__status--error">
-					GitHub-Repositories konnten nicht geladen werden.
+					{t.github.error}
 				</p>
 			)}
-			{!isLoading && !errorMessage && (
+			{!isLoading && !hasError && (
 				<div className="repos-grid">
 					{repos.map((repo, index) => (
 						<Reveal delay={index * 100} key={repo.id}>

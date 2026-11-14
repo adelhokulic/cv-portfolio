@@ -1,10 +1,14 @@
+import { useLanguage } from "../context/LanguageContext";
+
 const RepoCard = ({ repo }) => {
+	const { t } = useLanguage();
+
 	return (
 		<article className="repo-card">
 			<h3 className="repo-card__name">{repo.name}</h3>
 
 			<p className="repo-card__description">
-				{repo.description ? repo.description : "Keine Beschreibung vorhanden."}
+				{repo.description ? repo.description : t.github.noDescription}
 			</p>
 
 			<div className="repo-card__meta">
@@ -16,8 +20,8 @@ const RepoCard = ({ repo }) => {
 				)}
 
 				<span>
-					Aktualisiert am{" "}
-					{new Date(repo.updated_at).toLocaleDateString("de-DE")}
+					{t.github.updated}{" "}
+					{new Date(repo.updated_at).toLocaleDateString(t.github.dateLocale)}
 				</span>
 			</div>
 

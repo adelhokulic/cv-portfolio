@@ -2,11 +2,14 @@ import projects from "../data/projects.json";
 import ProjectList from "../components/ProjectList";
 import { useState } from "react";
 import GithubRepos from "../components/GithubRepos";
+import { useLanguage } from "../context/LanguageContext";
 
 const Projects = () => {
-	const [selectedTechnology, setSelectedTechnology] = useState("Alle");
+	const { t } = useLanguage();
+	// "all" is only an internal value, the button shows t.projects.all ("Alle" / "All")
+	const [selectedTechnology, setSelectedTechnology] = useState("all");
 
-	const technologies = ["Alle"];
+	const technologies = ["all"];
 	projects.forEach((project) => {
 		project.technologies.forEach((technology) => {
 			if (!technologies.includes(technology)) {
@@ -15,7 +18,7 @@ const Projects = () => {
 		});
 	});
 	const filteredProjects =
-		selectedTechnology === "Alle"
+		selectedTechnology === "all"
 			? projects
 			: projects.filter((project) =>
 					project.technologies.includes(selectedTechnology),
@@ -24,11 +27,8 @@ const Projects = () => {
 	return (
 		<section>
 			<header className="page-header">
-				<h1 className="page-header__title">Projekte</h1>
-				<p className="page-header__text">
-					Eine Auswahl meiner Projekte. Filtere nach Technologie, um zu sehen,
-					wo ich was eingesetzt habe.
-				</p>
+				<h1 className="page-header__title">{t.projects.title}</h1>
+				<p className="page-header__text">{t.projects.intro}</p>
 			</header>
 
 			<div className="filter">
@@ -39,7 +39,7 @@ const Projects = () => {
 							onClick={() => setSelectedTechnology(technology)}
 							className={`filter__btn ${selectedTechnology === technology ? "filter__btn--active" : ""}`}
 						>
-							{technology}
+							{technology === "all" ? t.projects.all : technology}
 						</button>
 					);
 				})}

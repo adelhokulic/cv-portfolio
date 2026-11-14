@@ -2,13 +2,24 @@
 	{
 		"title": "Web Shop",
 		"slug": "web-shop",
-		"description": "Responsiver Online-Shop mit Produkten aus der DummyJSON API. Der Warenkorb ist globaler State mit Context API und useReducer und bleibt auch nach einem Neuladen der Seite erhalten.",
-		"highlights": [
-			"Ein Reducer steuert jede Änderung am Warenkorb, Komponenten lesen den State über eigene Hooks statt über Prop Drilling",
-			"Währungsumrechner (USD, EUR, RSD), der alle Preise in der App sofort aktualisiert",
-			"Gutscheincodes, Gratisversand ab einem Mindestbetrag und Fortschrittsbalken bis zum Gratisversand",
-			"Summen, Rabatt und Versandkosten werden aus dem Warenkorb berechnet, statt doppelt gespeichert zu werden"
-		],
+		"description": {
+			"de": "Responsiver Online-Shop mit Produkten aus der DummyJSON API. Der Warenkorb ist globaler State mit Context API und useReducer und bleibt auch nach einem Neuladen der Seite erhalten.",
+			"en": "A responsive online store with products from the DummyJSON API. The cart is global state built with Context API and useReducer and survives a page reload."
+		},
+		"highlights": {
+			"de": [
+				"Ein Reducer steuert jede Änderung am Warenkorb, Komponenten lesen den State über eigene Hooks statt über Prop Drilling",
+				"Währungsumrechner (USD, EUR, RSD), der alle Preise in der App sofort aktualisiert",
+				"Gutscheincodes, Gratisversand ab einem Mindestbetrag und Fortschrittsbalken bis zum Gratisversand",
+				"Summen, Rabatt und Versandkosten werden aus dem Warenkorb berechnet, statt doppelt gespeichert zu werden"
+			],
+			"en": [
+				"One reducer controls every change to the cart, and components read the state through custom hooks instead of prop drilling",
+				"Currency switcher (USD, EUR, RSD) that updates every price in the app instantly",
+				"Coupon codes, free shipping above a minimum amount and a progress bar towards free shipping",
+				"Totals, discount and shipping are calculated from the cart instead of being stored twice"
+			]
+		},
 		"technologies": [
 			"React",
 			"React Router",
@@ -26,14 +37,31 @@
 	{
 		"title": "Open Library",
 		"slug": "open-library",
-		"description": "Buchsuche mit der freien Open Library API. Bücher lassen sich nach Titel, Autor oder ISBN suchen und nach Sprache filtern, mit eigenen Detailseiten für Bücher und Autoren.",
-		"highlights": [
-			"Suche nach Titel, Autor oder ISBN mit Sprachfilter und Seitennavigation",
-			"Detailseiten für Bücher (Cover, Beschreibung, Themen) und Autoren (Biografie, Werke)",
-			"Themen über teilbare URLs durchsuchen",
-			"Durchdachte Zustände: Ladeanzeige, Fehlermeldungen, leere Ergebnisse und Ersatz für fehlende Cover"
+		"description": {
+			"de": "Buchsuche mit der freien Open Library API. Bücher lassen sich nach Titel, Autor oder ISBN suchen und nach Sprache filtern, mit eigenen Detailseiten für Bücher und Autoren.",
+			"en": "Book search with the free Open Library API. Books can be searched by title, author or ISBN and filtered by language, with separate detail pages for books and authors."
+		},
+		"highlights": {
+			"de": [
+				"Suche nach Titel, Autor oder ISBN mit Sprachfilter und Seitennavigation",
+				"Detailseiten für Bücher (Cover, Beschreibung, Themen) und Autoren (Biografie, Werke)",
+				"Themen über teilbare URLs durchsuchen",
+				"Durchdachte Zustände: Ladeanzeige, Fehlermeldungen, leere Ergebnisse und Ersatz für fehlende Cover"
+			],
+			"en": [
+				"Search by title, author or ISBN with a language filter and pagination",
+				"Detail pages for books (cover, description, subjects) and authors (biography, works)",
+				"Browse subjects through shareable URLs",
+				"Thoughtful states: loading indicator, error messages, empty results and fallbacks for missing covers"
+			]
+		},
+		"technologies": [
+			"React",
+			"React Router",
+			"Axios",
+			"REST API",
+			"Bootstrap"
 		],
-		"technologies": ["React", "React Router", "Axios", "REST API", "Bootstrap"],
 		"image": "/images/open-library.png",
 		"github": "https://github.com/adelhokulic/open-library",
 		"demo": "https://open-library-lime.vercel.app",
@@ -42,14 +70,30 @@
 	{
 		"title": "Music Catalog",
 		"slug": "music-catalog",
-		"description": "Musikkatalog mit 25 Alben, 15 Künstlern und 125 Songs. Eine einzige Suche findet Alben, Künstler und Songs, und Favoriten bleiben auch nach dem nächsten Besuch gespeichert.",
-		"highlights": [
-			"Gemeinsame Suche über Albumtitel, Künstler und Songtitel direkt beim Tippen",
-			"Genre-Filter, der aus den Daten erzeugt wird und mit der Suche kombiniert werden kann",
-			"Sortierung nach Erscheinungsjahr oder Titel",
-			"Albumseiten mit Tracklist und automatisch berechneter Gesamtspielzeit, Künstlerseiten mit Diskografie"
+		"description": {
+			"de": "Musikkatalog mit 25 Alben, 15 Künstlern und 125 Songs. Eine einzige Suche findet Alben, Künstler und Songs, und Favoriten bleiben auch nach dem nächsten Besuch gespeichert.",
+			"en": "A music catalog with 25 albums, 15 artists and 125 songs. One search finds albums, artists and songs, and favorites are still saved on the next visit."
+		},
+		"highlights": {
+			"de": [
+				"Gemeinsame Suche über Albumtitel, Künstler und Songtitel direkt beim Tippen",
+				"Genre-Filter, der aus den Daten erzeugt wird und mit der Suche kombiniert werden kann",
+				"Sortierung nach Erscheinungsjahr oder Titel",
+				"Albumseiten mit Tracklist und automatisch berechneter Gesamtspielzeit, Künstlerseiten mit Diskografie"
+			],
+			"en": [
+				"Combined search across album titles, artists and song titles while typing",
+				"Genre filter generated from the data that can be combined with the search",
+				"Sorting by release year or title",
+				"Album pages with a tracklist and an automatically calculated total running time, artist pages with a discography"
+			]
+		},
+		"technologies": [
+			"React",
+			"React Router",
+			"localStorage",
+			"CSS"
 		],
-		"technologies": ["React", "React Router", "localStorage", "CSS"],
 		"image": "/images/music-catalog.png",
 		"github": "https://github.com/adelhokulic/music-catalog",
 		"demo": "https://music-catalog-eosin.vercel.app",
@@ -58,14 +102,28 @@
 	{
 		"title": "Kalorienzähler",
 		"slug": "brojac-kalorija",
-		"description": "App zum Erfassen der täglichen Ernährung. Man legt ein Kalorienziel fest, trägt Mahlzeiten mit Makronährstoffen ein und sieht den Fortschritt sofort.",
-		"highlights": [
-			"Formular mit Validierung und klaren Fehlermeldungen",
-			"Schnelles Hinzufügen von 10 häufigen Lebensmitteln mit einem Klick",
-			"Tageszusammenfassung mit Fortschrittsbalken und Aufteilung nach Mahlzeit und Makronährstoffen",
-			"Nur zwei Werte im State, alle Summen werden daraus berechnet und können nie auseinanderlaufen"
+		"description": {
+			"de": "App zum Erfassen der täglichen Ernährung. Man legt ein Kalorienziel fest, trägt Mahlzeiten mit Makronährstoffen ein und sieht den Fortschritt sofort.",
+			"en": "An app for tracking daily nutrition. You set a calorie goal, log meals with their macronutrients and see your progress instantly."
+		},
+		"highlights": {
+			"de": [
+				"Formular mit Validierung und klaren Fehlermeldungen",
+				"Schnelles Hinzufügen von 10 häufigen Lebensmitteln mit einem Klick",
+				"Tageszusammenfassung mit Fortschrittsbalken und Aufteilung nach Mahlzeit und Makronährstoffen",
+				"Nur zwei Werte im State, alle Summen werden daraus berechnet und können nie auseinanderlaufen"
+			],
+			"en": [
+				"Form with validation and clear error messages",
+				"Add 10 common foods with a single click",
+				"Daily summary with a progress bar and a breakdown by meal and macronutrients",
+				"Only two values in state, all totals are calculated from them and can never get out of sync"
+			]
+		},
+		"technologies": [
+			"React",
+			"CSS"
 		],
-		"technologies": ["React", "CSS"],
 		"image": "/images/brojac-kalorija.png",
 		"github": "https://github.com/adelhokulic/brojac-kalorija",
 		"demo": "https://calorie-counter-psi-seven.vercel.app",

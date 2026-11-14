@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import projects from "../data/projects.json";
 import ProjectList from "../components/ProjectList";
 import Reveal from "../components/Reveal";
+import { useLanguage } from "../context/LanguageContext";
 
 const Home = () => {
+	const { t } = useLanguage();
 	const featuredProjects = projects.filter(
 		(project) => project.featured === true,
 	);
@@ -11,32 +13,28 @@ const Home = () => {
 	return (
 		<>
 			<section className="hero">
-				<p className="hero__greeting">Hallo, ich bin</p>
+				<p className="hero__greeting">{t.home.greeting}</p>
 				<h1 className="hero__name">
 					Adel Hokulic<span>.</span>
 				</h1>
-				<p className="hero__role">Junior Frontend Developer</p>
-				<p className="hero__text">
-					Ursprünglich aus Bosnien und Herzegowina, heute in Berlin zu Hause.
-					Ich baue schnelle, responsive React-Anwendungen mit sauberem
-					State-Management und echten APIs.
-				</p>
+				<p className="hero__role">{t.home.role}</p>
+				<p className="hero__text">{t.home.intro}</p>
 
 				<div className="hero__actions">
 					<Link to="/projects" className="btn btn--primary btn--large">
-						Projekte ansehen
+						{t.home.viewProjects}
 					</Link>
 					<Link to="/contact" className="btn btn--ghost btn--large">
-						Kontakt aufnehmen
+						{t.home.contactMe}
 					</Link>
 				</div>
 			</section>
 
 			<section className="section">
 				<div className="section__header">
-					<h2 className="section__title">Ausgewählte Projekte</h2>
+					<h2 className="section__title">{t.home.featuredTitle}</h2>
 					<Link to="/projects" className="section__link">
-						Alle Projekte →
+						{t.home.allProjects}
 					</Link>
 				</div>
 
@@ -45,27 +43,20 @@ const Home = () => {
 			<Reveal>
 				<section className="section about-teaser">
 					<div className="about-teaser__text">
-						<h2 className="section__title">Über mich</h2>
-						<p>
-							Aufgewachsen in Bosnien und Herzegowina, angekommen in Berlin. Ich
-							verbinde gern Design und Logik und lerne jeden Tag dazu, von HTML
-							und CSS bis zu React, Next.js und Firebase.
-						</p>
+						<h2 className="section__title">{t.home.aboutTitle}</h2>
+						<p>{t.home.aboutText}</p>
 						<Link to="/about" className="section__link">
-							Mehr über mich →
+							{t.home.moreAboutMe}
 						</Link>
 					</div>
 				</section>
 			</Reveal>
 			<Reveal>
 				<section className="cta">
-					<h2 className="cta__title">Lass uns sprechen!</h2>
-					<p className="cta__text">
-						Du suchst einen motivierten Junior Frontend Developer in Berlin oder
-						remote? Ich freue mich auf deine Nachricht.
-					</p>
+					<h2 className="cta__title">{t.home.ctaTitle}</h2>
+					<p className="cta__text">{t.home.ctaText}</p>
 					<Link to="/contact" className="btn btn--large cta__btn">
-						Kontakt aufnehmen
+						{t.home.contactMe}
 					</Link>
 				</section>
 			</Reveal>

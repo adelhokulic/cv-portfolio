@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
+import { useLanguage } from "../context/LanguageContext";
 
 const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +10,7 @@ const Navbar = () => {
 		if (!isOpen) setIsOpen(true);
 	};
 	const { theme, toggleTheme } = useTheme();
+	const { language, toggleLanguage, t } = useLanguage();
 	return (
 		<header className="navbar">
 			<div className="navbar__inner">
@@ -18,7 +20,7 @@ const Navbar = () => {
 
 				<button
 					className={`navbar__toggle ${isOpen ? "navbar__toggle--open" : ""}`}
-					aria-label="Menü öffnen"
+					aria-label={t.nav.openMenu}
 					aria-expanded={isOpen}
 					onClick={() => navbar__toggle()}
 				>
@@ -36,7 +38,7 @@ const Navbar = () => {
 						end
 						className="navbar__link"
 					>
-						Start
+						{t.nav.home}
 					</NavLink>
 					<NavLink
 						onClick={() => {
@@ -45,7 +47,7 @@ const Navbar = () => {
 						to="/projects"
 						className="navbar__link"
 					>
-						Projekte
+						{t.nav.projects}
 					</NavLink>
 					<NavLink
 						onClick={() => {
@@ -54,7 +56,7 @@ const Navbar = () => {
 						to="/about"
 						className="navbar__link"
 					>
-						Über mich
+						{t.nav.about}
 					</NavLink>
 					<NavLink
 						onClick={() => {
@@ -63,16 +65,25 @@ const Navbar = () => {
 						to="/contact"
 						className="navbar__link"
 					>
-						Kontakt
+						{t.nav.contact}
 					</NavLink>
 
-					<button
-						onClick={() => toggleTheme()}
-						className="theme-toggle"
-						aria-label="Theme wechseln"
-					>
-						{theme === "light" ? "🌙" : "☀️"}
-					</button>
+					<div className="navbar__actions">
+						<button
+							onClick={() => toggleLanguage()}
+							className="theme-toggle language-toggle"
+							aria-label={t.nav.toggleLanguage}
+						>
+							{language === "de" ? "EN" : "DE"}
+						</button>
+						<button
+							onClick={() => toggleTheme()}
+							className="theme-toggle"
+							aria-label={t.nav.toggleTheme}
+						>
+							{theme === "light" ? "🌙" : "☀️"}
+						</button>
+					</div>
 				</nav>
 			</div>
 		</header>

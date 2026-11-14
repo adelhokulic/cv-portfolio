@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
+
 const ProjectCard = ({ project }) => {
+	const { language, t } = useLanguage();
+
 	return (
 		<article className="project-card">
 			<img
@@ -11,13 +15,15 @@ const ProjectCard = ({ project }) => {
 
 			<div className="project-card__body">
 				<h3 className="project-card__title">{project.title}</h3>
-				<p className="project-card__description">{project.description}</p>
+				<p className="project-card__description">
+					{project.description[language]}
+				</p>
 
 				<ul className="tags">
-					{project.technologies.map((technologie) => {
+					{project.technologies.map((technology) => {
 						return (
-							<li key={technologie} className="tag">
-								{technologie}
+							<li key={technology} className="tag">
+								{technology}
 							</li>
 						);
 					})}
@@ -25,7 +31,7 @@ const ProjectCard = ({ project }) => {
 
 				<div className="project-card__links">
 					<Link to={`/projects/${project.slug}`} className="btn btn--primary">
-						Details
+						{t.projects.details}
 					</Link>
 
 					<a
@@ -44,7 +50,7 @@ const ProjectCard = ({ project }) => {
 							target="_blank"
 							rel="noreferrer"
 						>
-							Live-Demo
+							{t.projects.demo}
 						</a>
 					)}
 				</div>

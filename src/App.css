@@ -995,3 +995,29 @@
 		transition: none;
 	}
 }
+
+/* ===== Navbar buttons for language and theme, side by side ===== */
+.navbar__actions {
+	display: flex;
+	gap: 8px;
+	margin-top: 8px;
+}
+
+.navbar__actions .theme-toggle {
+	margin: 0;
+	align-self: center;
+	color: var(--text);
+}
+
+/* Language button shows text ("EN" / "DE") instead of an emoji */
+.language-toggle {
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+}
+
+@media (min-width: 768px) {
+	.navbar__actions {
+		margin: 0 0 0 12px;
+	}
+}
