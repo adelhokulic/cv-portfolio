@@ -5,7 +5,8 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.svg" type="image/svg+xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1c1c20" media="(prefers-color-scheme: dark)" />
     <meta
       name="description"
       content="Adel Hokulic – Junior Frontend Developer in Berlin. Portfolio mit React-Projekten, Skills und Kontakt."
@@ -37,6 +38,16 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <!-- Apply the saved theme and language before React loads, so a dark-theme visitor
+         does not see a white flash on every page load -->
+    <script>
+      try {
+        var theme = localStorage.getItem("theme");
+        var language = localStorage.getItem("language");
+        if (theme) document.documentElement.setAttribute("data-theme", theme);
+        if (language) document.documentElement.setAttribute("lang", language);
+      } catch (e) {}
+    </script>
     <title>Adel Hokulic – Frontend Developer</title>
   </head>
   <body>

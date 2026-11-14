@@ -29,7 +29,7 @@
 			"localStorage",
 			"CSS"
 		],
-		"image": "/images/web-shop.png",
+		"image": "/images/web-shop.jpg",
 		"github": "https://github.com/adelhokulic/web-shop",
 		"demo": "https://web-shop-lilac-omega.vercel.app/",
 		"featured": true
@@ -62,7 +62,7 @@
 			"REST API",
 			"Bootstrap"
 		],
-		"image": "/images/open-library.png",
+		"image": "/images/open-library.jpg",
 		"github": "https://github.com/adelhokulic/open-library",
 		"demo": "https://open-library-lime.vercel.app",
 		"featured": true
@@ -94,7 +94,7 @@
 			"localStorage",
 			"CSS"
 		],
-		"image": "/images/music-catalog.png",
+		"image": "/images/music-catalog.jpg",
 		"github": "https://github.com/adelhokulic/music-catalog",
 		"demo": "https://music-catalog-eosin.vercel.app",
 		"featured": true
@@ -124,8 +124,8 @@
 			"React",
 			"CSS"
 		],
-		"image": "/images/brojac-kalorija.png",
-		"github": "https://github.com/adelhokulic/brojac-kalorija",
+		"image": "/images/brojac-kalorija.jpg",
+		"github": "https://github.com/adelhokulic/calorie-counter",
 		"demo": "https://calorie-counter-psi-seven.vercel.app",
 		"featured": false
 	}

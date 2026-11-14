@@ -140,7 +140,7 @@ On submit, each field is checked and its error message is stored in state. A loc
 
 ## Adding a Project
 
-Add an object to [`src/data/projects.json`](src/data/projects.json) and a screenshot to `public/images/`:
+Add an object to [`src/data/projects.json`](src/data/projects.json) and a screenshot to `public/images/` (JPG, about 1400px wide, so the page stays fast):
 
 ```json
 {
@@ -155,7 +155,7 @@ Add an object to [`src/data/projects.json`](src/data/projects.json) and a screen
 		"en": ["Key feature one", "Key feature two"]
 	},
 	"technologies": ["React", "CSS"],
-	"image": "/images/project-name.png",
+	"image": "/images/project-name.jpg",
 	"github": "https://github.com/adelhokulic/project-name",
 	"demo": "https://project-name.vercel.app",
 	"featured": false
