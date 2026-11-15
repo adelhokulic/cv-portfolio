@@ -1,5 +1,37 @@
 [
 	{
+		"title": "Job Application",
+		"slug": "job-application",
+		"description": {
+			"de": "Bewerbungsformular in vier Schritten mit React Hook Form. Jedes Feld wird geprüft, eine angefangene Bewerbung bleibt nach einem Neuladen erhalten, und vor dem Absenden gibt es eine Übersicht aller Angaben.",
+			"en": "A four-step job application form built with React Hook Form. Every field is validated, an unfinished application survives a page reload, and a review page shows all data before submitting."
+		},
+		"highlights": {
+			"de": [
+				"Jeder Schritt wird einzeln geprüft, erst dann geht es weiter; Fehler erscheinen beim Verlassen eines Feldes, nicht beim Tippen",
+				"Beliebig viele frühere Jobs mit useFieldArray, inklusive Datumsprüfung „bis“ nach „von“",
+				"CV-Upload nur als PDF bis 2 MB und Anschreiben mit Live-Wortzähler (mindestens 50 Wörter)",
+				"Validierungsregeln in eigenen Dateien statt in den Komponenten; Gesamterfahrung wird aus den Jobdaten berechnet"
+			],
+			"en": [
+				"Each step is validated on its own before moving on; errors appear when a field loses focus, not while typing",
+				"Any number of previous jobs with useFieldArray, including a check that the end date comes after the start date",
+				"CV upload limited to PDF up to 2 MB and a cover letter with a live word counter (at least 50 words)",
+				"Validation rules live in their own files instead of the components; total experience is calculated from the job dates"
+			]
+		},
+		"technologies": [
+			"React",
+			"React Hook Form",
+			"localStorage",
+			"CSS"
+		],
+		"image": "/images/job-application.jpg",
+		"github": "https://github.com/adelhokulic/job-application",
+		"demo": "https://job-application-phi-lilac.vercel.app",
+		"featured": false
+	},
+	{
 		"title": "Web Shop",
 		"slug": "web-shop",
 		"description": {
