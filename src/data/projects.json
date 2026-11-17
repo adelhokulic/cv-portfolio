@@ -29,7 +29,7 @@
 		"image": "/images/recipe-hub.jpg",
 		"github": "https://github.com/adelhokulic/recipe-hub",
 		"demo": "https://recipe-hub-rho-three.vercel.app",
-		"featured": false
+		"featured": true
 	},
 	{
 		"title": "Job Application",
@@ -129,7 +129,7 @@
 		"image": "/images/open-library.jpg",
 		"github": "https://github.com/adelhokulic/open-library",
 		"demo": "https://open-library-lime.vercel.app",
-		"featured": true
+		"featured": false
 	},
 	{
 		"title": "Music Catalog",
