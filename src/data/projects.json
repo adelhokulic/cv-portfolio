@@ -1,5 +1,37 @@
 [
 	{
+		"title": "RecipeHub (Next.js)",
+		"slug": "recipe-hub",
+		"description": {
+			"de": "Rezeptseite mit Next.js (App Router) und der DummyJSON Recipes API. Jede Seite ist eine Server Component, die ihre Daten auf dem Server lädt, sodass der Browser kaum JavaScript herunterlädt.",
+			"en": "A recipe website built with Next.js (App Router) and the DummyJSON Recipes API. Every page is a Server Component that loads its data on the server, so the browser downloads very little JavaScript."
+		},
+		"highlights": {
+			"de": [
+				"Server Components zuerst: nur zwei kleine Client Components (Zutaten ein-/ausblenden, Kalorienrechner)",
+				"Dateibasiertes Routing mit dynamischen Seiten für Rezepte, Tags, Küchen und Mahlzeiten sowie Seitennavigation über die URL",
+				"Alle API-Aufrufe in einer eigenen Datenschicht, Caching mit revalidate und eine serverseitige Umgebungsvariable",
+				"Routenparameter werden vor dem API-Aufruf geprüft, mit eigenen „Nicht gefunden“-Zuständen für jede Seite"
+			],
+			"en": [
+				"Server Components first: only two small Client Components (show/hide ingredients, calorie calculator)",
+				"File-based routing with dynamic pages for recipes, tags, cuisines and meal types, plus pagination through the URL",
+				"All API calls in a separate data layer, caching with revalidate and a server-only environment variable",
+				"Route parameters are validated before calling the API, with friendly \"not found\" states on every page"
+			]
+		},
+		"technologies": [
+			"Next.js",
+			"React",
+			"Bootstrap",
+			"REST API"
+		],
+		"image": "/images/recipe-hub.jpg",
+		"github": "https://github.com/adelhokulic/recipe-hub",
+		"demo": "https://recipe-hub-rho-three.vercel.app",
+		"featured": false
+	},
+	{
 		"title": "Job Application",
 		"slug": "job-application",
 		"description": {
@@ -132,7 +164,7 @@
 		"featured": true
 	},
 	{
-		"title": "Kalorienzähler",
+		"title": "Calorie Counter",
 		"slug": "brojac-kalorija",
 		"description": {
 			"de": "App zum Erfassen der täglichen Ernährung. Man legt ein Kalorienziel fest, trägt Mahlzeiten mit Makronährstoffen ein und sieht den Fortschritt sofort.",
