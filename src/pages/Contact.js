@@ -97,9 +97,11 @@ const Contact = () => {
 										isInvalid={nameError !== ""}
 										onChange={(e) => setForm({ ...form, name: e.target.value })}
 									/>
-									<Form.Control.Feedback type="invalid">
-										{t.contact[nameError]}
-									</Form.Control.Feedback>
+									{nameError && (
+										<Form.Control.Feedback type="invalid" className="d-block">
+											{t.contact[nameError]}
+										</Form.Control.Feedback>
+									)}
 								</Form.Group>
 
 								<Form.Group className="mb-3" controlId="email">
@@ -116,9 +118,11 @@ const Contact = () => {
 											setForm({ ...form, email: e.target.value })
 										}
 									/>
-									<Form.Control.Feedback type="invalid">
-										{t.contact[emailError]}
-									</Form.Control.Feedback>
+									{emailError && (
+										<Form.Control.Feedback type="invalid" className="d-block">
+											{t.contact[emailError]}
+										</Form.Control.Feedback>
+									)}
 								</Form.Group>
 
 								<Form.Group className="mb-4" controlId="message">
@@ -136,9 +140,11 @@ const Contact = () => {
 											setForm({ ...form, message: e.target.value })
 										}
 									/>
-									<Form.Control.Feedback type="invalid">
-										{t.contact[messageError]}
-									</Form.Control.Feedback>
+									{messageError && (
+										<Form.Control.Feedback type="invalid" className="d-block">
+											{t.contact[messageError]}
+										</Form.Control.Feedback>
+									)}
 								</Form.Group>
 
 								<div className="d-grid d-md-block">
