@@ -9,7 +9,7 @@ export const ThemeProvider = ({ children }) => {
 		} else return localStorage.getItem("theme");
 	});
 	useEffect(() => {
-		document.documentElement.setAttribute("data-theme", theme);
+		document.documentElement.setAttribute("data-bs-theme", theme);
 		localStorage.setItem("theme", theme);
 	}, [theme]);
 

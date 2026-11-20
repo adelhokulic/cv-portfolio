@@ -1,48 +1,50 @@
+import Button from "react-bootstrap/Button";
 import { useLanguage } from "../context/LanguageContext";
 
 const RepoCard = ({ repo }) => {
 	const { t } = useLanguage();
 
 	return (
-		<article className="repo-card">
-			<h3 className="repo-card__name">{repo.name}</h3>
+		<article className="bento-card d-flex flex-column gap-2 p-4">
+			<h3 className="repo-card__name mb-1">{repo.name}</h3>
 
-			<p className="repo-card__description">
+			<p className="repo-card__description mb-1">
 				{repo.description ? repo.description : t.github.noDescription}
 			</p>
 
-			<div className="repo-card__meta">
+			<div className="d-flex flex-wrap gap-3 small text-body-secondary">
 				{repo.language && (
-					<span className="repo-card__language">
+					<span className="d-inline-flex align-items-center gap-2">
 						<span className="repo-card__dot" aria-hidden="true"></span>
 						{repo.language}
 					</span>
 				)}
-
 				<span>
 					{t.github.updated}{" "}
 					{new Date(repo.updated_at).toLocaleDateString(t.github.dateLocale)}
 				</span>
 			</div>
 
-			<div className="repo-card__links">
-				<a
+			<div className="d-flex gap-2 mt-auto pt-3">
+				<Button
 					href={repo.html_url}
-					className="btn btn--ghost"
 					target="_blank"
 					rel="noreferrer"
+					size="sm"
+					variant="outline-secondary"
 				>
 					Code
-				</a>
+				</Button>
 				{repo.homepage && (
-					<a
+					<Button
 						href={repo.homepage}
-						className="btn btn--ghost"
 						target="_blank"
 						rel="noreferrer"
+						size="sm"
+						variant="outline-secondary"
 					>
 						Demo
-					</a>
+					</Button>
 				)}
 			</div>
 		</article>

@@ -1,12 +1,12 @@
 import projects from "../data/projects.json";
 import ProjectList from "../components/ProjectList";
 import { useState } from "react";
+import Button from "react-bootstrap/Button";
 import GithubRepos from "../components/GithubRepos";
 import { useLanguage } from "../context/LanguageContext";
 
 const Projects = () => {
 	const { t } = useLanguage();
-	// "all" is only an internal value, the button shows t.projects.all ("Alle" / "All")
 	const [selectedTechnology, setSelectedTechnology] = useState("all");
 
 	const technologies = ["all"];
@@ -26,21 +26,27 @@ const Projects = () => {
 
 	return (
 		<section>
-			<header className="page-header">
-				<h1 className="page-header__title">{t.projects.title}</h1>
-				<p className="page-header__text">{t.projects.intro}</p>
+			<header className="mb-4">
+				<h1 className="page-title mb-2">{t.projects.title}</h1>
+				<p className="lead-muted mb-0">{t.projects.intro}</p>
 			</header>
 
-			<div className="filter">
+			<div className="d-flex flex-wrap gap-2 mb-4 pb-2">
 				{technologies.map((technology) => {
 					return (
-						<button
+						<Button
 							key={technology}
+							size="sm"
+							className="rounded-pill px-3"
+							variant={
+								selectedTechnology === technology
+									? "primary"
+									: "outline-secondary"
+							}
 							onClick={() => setSelectedTechnology(technology)}
-							className={`filter__btn ${selectedTechnology === technology ? "filter__btn--active" : ""}`}
 						>
 							{technology === "all" ? t.projects.all : technology}
-						</button>
+						</Button>
 					);
 				})}
 			</div>

@@ -1,61 +1,66 @@
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import { useLanguage } from "../context/LanguageContext";
 
 const ProjectCard = ({ project }) => {
 	const { language, t } = useLanguage();
 
 	return (
-		<article className="project-card">
-			<img
-				className="project-card__image"
-				src={project.image}
-				alt={project.title}
-				loading="lazy"
-			/>
+		<Card className="project-card">
+			<div className="project-card__image-wrap">
+				<Card.Img
+					variant="top"
+					className="project-card__image rounded-0"
+					src={project.image}
+					alt={project.title}
+					loading="lazy"
+				/>
+			</div>
 
-			<div className="project-card__body">
-				<h3 className="project-card__title">{project.title}</h3>
-				<p className="project-card__description">
-					{project.description[language]}
-				</p>
+			<Card.Body className="d-flex flex-column gap-3 p-4">
+				<Card.Title as="h3" className="h5 mb-0">
+					{project.title}
+				</Card.Title>
+				<Card.Text className="mb-0">{project.description[language]}</Card.Text>
 
-				<ul className="tags">
+				<div className="d-flex flex-wrap gap-2">
 					{project.technologies.map((technology) => {
 						return (
-							<li key={technology} className="tag">
+							<span key={technology} className="tech-pill tech-pill--sm">
 								{technology}
-							</li>
+							</span>
 						);
 					})}
-				</ul>
+				</div>
 
-				<div className="project-card__links">
-					<Link to={`/projects/${project.slug}`} className="btn btn--primary">
+				<div className="d-flex flex-wrap gap-2 mt-auto pt-2">
+					<Button as={Link} to={`/projects/${project.slug}`} size="sm">
 						{t.projects.details}
-					</Link>
-
-					<a
+					</Button>
+					<Button
 						href={project.github}
-						className="btn btn--ghost"
 						target="_blank"
 						rel="noreferrer"
+						size="sm"
+						variant="outline-secondary"
 					>
 						GitHub
-					</a>
-
+					</Button>
 					{project.demo !== "" && (
-						<a
+						<Button
 							href={project.demo}
-							className="btn btn--ghost"
 							target="_blank"
 							rel="noreferrer"
+							size="sm"
+							variant="outline-secondary"
 						>
 							{t.projects.demo}
-						</a>
+						</Button>
 					)}
 				</div>
-			</div>
-		</article>
+			</Card.Body>
+		</Card>
 	);
 };
 

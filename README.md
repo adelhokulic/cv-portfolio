@@ -1,13 +1,13 @@
 # Portfolio – Adel Hokulic
 
-My personal portfolio website, built with React. It presents who I am, the projects I have built, and a way to get in touch. The site is available in German (default) and English, as I live in Berlin and am looking for my first role as a Junior Frontend Developer in Germany.
+My personal portfolio website, built with React and React Bootstrap. It presents who I am, the projects I have built, and a way to get in touch. The site is available in German (default) and English, as I live in Berlin and am looking for my first role as a Junior Frontend Developer in Germany.
 
 **Live site:** [adelhokulic.de](https://adelhokulic.de)
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
 ![React Router](https://img.shields.io/badge/React_Router-7-CA4245?logo=reactrouter&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)
-![CSS](https://img.shields.io/badge/CSS-Grid_%26_Flexbox-1572B6?logo=css&logoColor=white)
+![React Bootstrap](https://img.shields.io/badge/React_Bootstrap-2-7952B3?logo=bootstrap&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?logo=vercel&logoColor=white)
 
 Built as a project in the ITMentorstva frontend mentorship program.
@@ -15,7 +15,7 @@ Built as a project in the ITMentorstva frontend mentorship program.
 ## Features
 
 **Pages**
-- **Home** – introduction and a selection of featured projects
+- **Home** – a bento grid with the introduction, an "open to work" status, location, tech stack, what I'm currently learning, the number of projects, featured projects and a contact call to action
 - **Projects** – all projects with a technology filter
 - **Project details** – description, key features, technologies and links to the code and the live demo (`/projects/:slug`)
 - **About** – a short story and a list of skills
@@ -37,11 +37,12 @@ Built as a project in the ITMentorstva frontend mentorship program.
 **Dark and light theme**
 - Global theme state through React Context (`ThemeContext` with a `useTheme` hook)
 - The choice is saved in `localStorage` and restored on the next visit
-- All colors are CSS custom properties, so switching the theme only changes one attribute on `<html>`
+- The theme is applied through Bootstrap's color modes (`data-bs-theme` on `<html>`), so every Bootstrap component switches colors automatically
+- A small inline script in `index.html` applies the saved theme before React loads, so there is no white flash on page load
 
 **Contact form**
 - Controlled inputs for name, email and message
-- Validation through React state, with an error message under each field and a red border on invalid fields
+- Validation through React state, shown with React Bootstrap's `isInvalid` and `Form.Control.Feedback` under each field
 - Whitespace-only input is rejected (`trim`)
 - After a successful submit, the form is replaced with a personal thank-you message (no data is actually sent)
 
@@ -56,9 +57,10 @@ Built as a project in the ITMentorstva frontend mentorship program.
 - Animations are turned off for users who enable "Reduce motion" in their system settings
 
 **Responsive design**
-- Mobile-first CSS with Grid and Flexbox, no UI framework
-- Hamburger menu on small screens that closes after navigation
-- Project grid with 1, 2 or 3 columns depending on the screen width
+- Layout built with the React Bootstrap grid (`Container`, `Row`, `Col`), mobile first
+- Collapsible navbar on small screens that closes after navigation
+- Project and repository grids with 1, 2 or 3 columns depending on the screen width
+- Modern details on top of Bootstrap: bento cards, gradient headline, hover effects and a pulsing status badge
 
 ## Tech Stack
 
@@ -69,7 +71,8 @@ Built as a project in the ITMentorstva frontend mentorship program.
 | Global state | Context API (`createContext`, `useContext`, custom hook) |
 | Persistence | Browser `localStorage` |
 | Data | Local JSON file, public GitHub REST API with Axios |
-| Styling | CSS with custom properties, Grid, Flexbox and BEM-style class names |
+| UI library | React Bootstrap 2 and Bootstrap 5.3 (grid, Navbar, Card, Button, Form, Spinner, Alert, color modes) |
+| Styling | A small custom stylesheet with CSS custom properties on top of Bootstrap, Inter font |
 | Tooling | Create React App, ESLint, Prettier, Git |
 | Hosting | Vercel with automatic deployments from GitHub, custom domain with HTTPS |
 
@@ -89,7 +92,8 @@ Built as a project in the ITMentorstva frontend mentorship program.
 ```text
 src/
 ├── components/
-│   ├── Navbar.js          # Navigation, mobile menu and theme toggle
+│   ├── Navbar.js          # Navigation, mobile menu, language and theme toggle
+│   ├── Footer.js          # Footer with copyright and GitHub link
 │   ├── ProjectCard.js     # One project as a card
 │   ├── ProjectList.js     # Grid of cards, or an empty state
 │   ├── GithubRepos.js     # Latest repositories from the GitHub API
@@ -108,9 +112,10 @@ src/
 │   ├── About.js
 │   ├── Contact.js
 │   └── NotFound.js
-├── App.js                 # Routes
-├── App.css                # Component and page styles
-└── index.css              # Theme colors and base styles
+├── App.js                 # Providers, layout and routes
+├── App.css                # Custom styles on top of Bootstrap
+├── index.css              # Theme colors and Bootstrap overrides
+└── index.js               # Entry point, imports Bootstrap CSS
 public/
 └── images/                # Project screenshots
 ```
@@ -123,7 +128,7 @@ The list of technologies is built from the project data instead of being written
 
 ```js
 const filteredProjects =
-	selectedTechnology === "Alle"
+	selectedTechnology === "all"
 		? projects
 		: projects.filter((project) => project.technologies.includes(selectedTechnology));
 ```
@@ -132,7 +137,7 @@ const filteredProjects =
 
 ### Theme
 
-`ThemeProvider` reads the saved theme from `localStorage` once, with a lazy initial value in `useState`. A `useEffect` then writes every change to the `data-theme` attribute on `<html>` and back to `localStorage`. The CSS defines the colors for `[data-theme="dark"]`, so no component needs its own dark styles.
+`ThemeProvider` reads the saved theme from `localStorage` once, with a lazy initial value in `useState`. A `useEffect` then writes every change to the `data-bs-theme` attribute on `<html>` and back to `localStorage`. Bootstrap switches all of its components through that attribute, and the custom styles use Bootstrap's CSS variables, so no component needs its own dark styles.
 
 ### Contact form validation
 
@@ -200,6 +205,7 @@ The site is hosted on [Vercel](https://vercel.com) under the custom domain [adel
 - Persisting user preferences in `localStorage` with a lazy initial state
 - Deriving values from state instead of storing them twice
 - Building reusable components that work in more than one place
+- Building a responsive layout with React Bootstrap and theming it with Bootstrap color modes
 - Writing controlled forms with validation through state
 - Fetching data from a public API with loading, error and cancellation handling
 - Building a multilingual site with Context and a translations object

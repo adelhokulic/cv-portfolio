@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import { useLanguage } from "../context/LanguageContext";
 
 const skills = [
@@ -23,35 +26,36 @@ const About = () => {
 	const { t } = useLanguage();
 
 	return (
-		<section className="about">
-			<header className="page-header">
-				<h1 className="page-header__title">{t.about.title}</h1>
-			</header>
+		<section>
+			<h1 className="page-title mb-4">{t.about.title}</h1>
 
-			<div className="about__content">
-				<div className="about__text">
-					<p className="about__lead">{t.about.lead}</p>
-					<p>{t.about.text1}</p>
-					<p>{t.about.text2}</p>
-
-					<Link to="/contact" className="btn btn--primary btn--large">
+			<Row className="g-4 g-lg-5">
+				<Col lg={7}>
+					<p className="fs-5 fw-medium text-body-emphasis mb-4">
+						{t.about.lead}
+					</p>
+					<p className="text-body-secondary mb-3">{t.about.text1}</p>
+					<p className="text-body-secondary mb-4">{t.about.text2}</p>
+					<Button as={Link} to="/contact" size="lg">
 						{t.about.cta}
-					</Link>
-				</div>
+					</Button>
+				</Col>
 
-				<aside className="about__skills">
-					<h2 className="about__subtitle">{t.about.skills}</h2>
-					<ul className="tags tags--large">
-						{skills.map((skill) => {
-							return (
-								<li key={skill} className="tag">
-									{skill}
-								</li>
-							);
-						})}
-					</ul>
-				</aside>
-			</div>
+				<Col lg={5}>
+					<div className="bento-card h-auto">
+						<p className="bento-label">{t.about.skills}</p>
+						<div className="d-flex flex-wrap gap-2">
+							{skills.map((skill) => {
+								return (
+									<span key={skill} className="tech-pill">
+										{skill}
+									</span>
+								);
+							})}
+						</div>
+					</div>
+				</Col>
+			</Row>
 		</section>
 	);
 };

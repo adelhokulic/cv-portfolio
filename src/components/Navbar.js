@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import BootstrapNavbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Button from "react-bootstrap/Button";
 import { useTheme } from "../context/ThemeContext";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -12,81 +16,89 @@ const Navbar = () => {
 	const { theme, toggleTheme } = useTheme();
 	const { language, toggleLanguage, t } = useLanguage();
 	return (
-		<header className="navbar">
-			<div className="navbar__inner">
-				<NavLink to="/" className="navbar__logo">
-					Adel<span>.</span>
-				</NavLink>
-
-				<button
-					className={`navbar__toggle ${isOpen ? "navbar__toggle--open" : ""}`}
-					aria-label={t.nav.openMenu}
-					aria-expanded={isOpen}
-					onClick={() => navbar__toggle()}
+		<BootstrapNavbar
+			expand="md"
+			sticky="top"
+			className="app-navbar py-3"
+			expanded={isOpen}
+			onToggle={() => navbar__toggle()}
+		>
+			<Container>
+				<BootstrapNavbar.Brand
+					as={NavLink}
+					to="/"
+					onClick={() => setIsOpen(false)}
 				>
-					<span></span>
-					<span></span>
-					<span></span>
-				</button>
+					Adel<span className="brand-dot">.</span>
+				</BootstrapNavbar.Brand>
 
-				<nav className={`navbar__menu ${isOpen ? "navbar__menu--open" : ""}`}>
-					<NavLink
-						onClick={() => {
-							setIsOpen(false);
-						}}
-						to="/"
-						end
-						className="navbar__link"
-					>
-						{t.nav.home}
-					</NavLink>
-					<NavLink
-						onClick={() => {
-							setIsOpen(false);
-						}}
-						to="/projects"
-						className="navbar__link"
-					>
-						{t.nav.projects}
-					</NavLink>
-					<NavLink
-						onClick={() => {
-							setIsOpen(false);
-						}}
-						to="/about"
-						className="navbar__link"
-					>
-						{t.nav.about}
-					</NavLink>
-					<NavLink
-						onClick={() => {
-							setIsOpen(false);
-						}}
-						to="/contact"
-						className="navbar__link"
-					>
-						{t.nav.contact}
-					</NavLink>
+				<BootstrapNavbar.Toggle
+					aria-controls="main-nav"
+					aria-label={t.nav.openMenu}
+				/>
 
-					<div className="navbar__actions">
-						<button
+				<BootstrapNavbar.Collapse id="main-nav">
+					<Nav className="ms-auto mt-3 mt-md-0 gap-md-1">
+						<Nav.Link
+							as={NavLink}
+							to="/"
+							end
+							onClick={() => {
+								setIsOpen(false);
+							}}
+						>
+							{t.nav.home}
+						</Nav.Link>
+						<Nav.Link
+							as={NavLink}
+							to="/projects"
+							onClick={() => {
+								setIsOpen(false);
+							}}
+						>
+							{t.nav.projects}
+						</Nav.Link>
+						<Nav.Link
+							as={NavLink}
+							to="/about"
+							onClick={() => {
+								setIsOpen(false);
+							}}
+						>
+							{t.nav.about}
+						</Nav.Link>
+						<Nav.Link
+							as={NavLink}
+							to="/contact"
+							onClick={() => {
+								setIsOpen(false);
+							}}
+						>
+							{t.nav.contact}
+						</Nav.Link>
+					</Nav>
+
+					<div className="d-flex gap-2 ms-md-3 mt-3 mt-md-0">
+						<Button
+							variant="outline-secondary"
+							className="icon-btn"
 							onClick={() => toggleLanguage()}
-							className="theme-toggle language-toggle"
 							aria-label={t.nav.toggleLanguage}
 						>
 							{language === "de" ? "EN" : "DE"}
-						</button>
-						<button
+						</Button>
+						<Button
+							variant="outline-secondary"
+							className="icon-btn"
 							onClick={() => toggleTheme()}
-							className="theme-toggle"
 							aria-label={t.nav.toggleTheme}
 						>
 							{theme === "light" ? "🌙" : "☀️"}
-						</button>
+						</Button>
 					</div>
-				</nav>
-			</div>
-		</header>
+				</BootstrapNavbar.Collapse>
+			</Container>
+		</BootstrapNavbar>
 	);
 };
 

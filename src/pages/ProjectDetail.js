@@ -1,5 +1,9 @@
 import { Link, useParams } from "react-router-dom";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import projects from "../data/projects.json";
+import Reveal from "../components/Reveal";
 import { useLanguage } from "../context/LanguageContext";
 
 const ProjectDetail = () => {
@@ -9,82 +13,88 @@ const ProjectDetail = () => {
 
 	if (!project) {
 		return (
-			<section className="not-found">
-				<p className="not-found__code">404</p>
-				<h1 className="not-found__title">{t.projectDetail.notFoundTitle}</h1>
-				<p className="not-found__text">{t.projectDetail.notFoundText}</p>
-				<Link to="/projects" className="btn btn--primary">
+			<section className="text-center py-5">
+				<p className="not-found-code mb-3">404</p>
+				<h1 className="h3 fw-bold mb-2">{t.projectDetail.notFoundTitle}</h1>
+				<p className="text-body-secondary mb-4">
+					{t.projectDetail.notFoundText}
+				</p>
+				<Button as={Link} to="/projects">
 					{t.projectDetail.backToProjects}
-				</Link>
+				</Button>
 			</section>
 		);
 	}
 
 	return (
-		<article className="project-detail">
-			<Link to="/projects" className="back-link">
-				{t.projectDetail.back}
-			</Link>
-
-			<header className="project-detail__header">
-				<h1 className="project-detail__title">{project.title}</h1>
-				<p className="project-detail__description">
-					{project.description[language]}
-				</p>
-
-				<ul className="tags">
-					{project.technologies.map((technology) => {
-						return (
-							<li key={technology} className="tag">
-								{technology}
-							</li>
-						);
-					})}
-				</ul>
-
-				<div className="project-detail__links">
-					<a
-						href={project.github}
-						className="btn btn--ghost"
-						target="_blank"
-						rel="noreferrer"
+		<Row className="justify-content-center">
+			<Col lg={10} xl={9}>
+				<article>
+					<Link
+						to="/projects"
+						className="link-secondary text-decoration-none d-inline-block mb-4"
 					>
-						{t.projectDetail.code}
-					</a>
+						{t.projectDetail.back}
+					</Link>
 
-					{project.demo !== "" && (
-						<a
-							href={project.demo}
-							className="btn btn--primary"
-							target="_blank"
-							rel="noreferrer"
-						>
-							{t.projectDetail.demo}
-						</a>
-					)}
-				</div>
-			</header>
+					<header className="mb-4">
+						<h1 className="page-title mb-3">{project.title}</h1>
+						<p className="lead-muted mb-3">{project.description[language]}</p>
 
-			<img
-				className="project-detail__image"
-				src={project.image}
-				alt={project.title}
-			/>
+						<div className="d-flex flex-wrap gap-2 mb-4">
+							{project.technologies.map((technology) => {
+								return (
+									<span key={technology} className="tech-pill">
+										{technology}
+									</span>
+								);
+							})}
+						</div>
 
-			<section className="project-detail__section">
-				<h2 className="project-detail__subtitle">{t.projectDetail.features}</h2>
+						<div className="d-flex flex-wrap gap-2">
+							{project.demo !== "" && (
+								<Button href={project.demo} target="_blank" rel="noreferrer">
+									{t.projectDetail.demo}
+								</Button>
+							)}
+							<Button
+								href={project.github}
+								target="_blank"
+								rel="noreferrer"
+								variant="outline-secondary"
+							>
+								{t.projectDetail.code}
+							</Button>
+						</div>
+					</header>
 
-				<ul className="highlights">
-					{project.highlights[language].map((highlight) => {
-						return (
-							<li key={highlight} className="highlights__item">
-								{highlight}
-							</li>
-						);
-					})}
-				</ul>
-			</section>
-		</article>
+					<img
+						className="detail-image mb-5"
+						src={project.image}
+						alt={project.title}
+					/>
+
+					<section>
+						<h2 className="section-title mb-4">{t.projectDetail.features}</h2>
+
+						<Row xs={1} md={2} className="g-3">
+							{project.highlights[language].map((highlight, index) => {
+								return (
+									<Col key={highlight}>
+										<Reveal delay={index * 100}>
+											<div className="bento-card d-flex gap-3 p-4">
+												<span className="highlight-check">✓</span>
+												<span>{highlight}</span>
+											</div>
+										</Reveal>
+									</Col>
+								);
+							})}
+						</Row>
+					</section>
+				</article>
+			</Col>
+		</Row>
 	);
 };
 

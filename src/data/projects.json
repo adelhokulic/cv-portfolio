@@ -1,6 +1,6 @@
 [
 	{
-		"title": "RecipeHub (Next.js)",
+		"title": "RecipeHub",
 		"slug": "recipe-hub",
 		"description": {
 			"de": "Rezeptseite mit Next.js (App Router) und der DummyJSON Recipes API. Jede Seite ist eine Server Component, die ihre Daten auf dem Server lädt, sodass der Browser kaum JavaScript herunterlädt.",

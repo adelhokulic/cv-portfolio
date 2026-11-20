@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-bs-theme="dark">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -11,7 +11,6 @@
       name="description"
       content="Adel Hokulic – Junior Frontend Developer in Berlin. Portfolio mit React-Projekten, Skills und Kontakt."
     />
-    <!-- Link preview (Open Graph) for Google, LinkedIn, WhatsApp, Slack, Facebook... -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://adelhokulic.de/" />
     <meta property="og:title" content="Adel Hokulic – Junior Frontend Developer" />
@@ -21,47 +20,24 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Adel Hokulic – Junior Frontend Developer, Berlin" />
     <meta property="og:locale" content="de_DE" />
-    <!-- Large preview image on X (Twitter) -->
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <!-- Apply the saved theme and language before React loads, so a dark-theme visitor
-         does not see a white flash on every page load -->
     <script>
       try {
         var theme = localStorage.getItem("theme");
         var language = localStorage.getItem("language");
-        if (theme) document.documentElement.setAttribute("data-theme", theme);
+        if (theme) document.documentElement.setAttribute("data-bs-theme", theme);
         if (language) document.documentElement.setAttribute("lang", language);
       } catch (e) {}
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>Adel Hokulic – Frontend Developer</title>
   </head>
   <body>
     <noscript>Bitte aktiviere JavaScript, um diese Seite zu sehen.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

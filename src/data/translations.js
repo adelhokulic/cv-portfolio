@@ -1,7 +1,3 @@
-// All texts of the site in German and English.
-// Usage: const t = translations[language];  then  t.home.greeting
-// Every key must exist in both languages.
-
 const translations = {
 	de: {
 		nav: {
@@ -26,6 +22,18 @@ const translations = {
 			aboutText:
 				"Aufgewachsen in Bosnien und Herzegowina, angekommen in Berlin. Ich verbinde gern Design und Logik und lerne jeden Tag dazu, von HTML und CSS bis zu React, Next.js und Firebase.",
 			moreAboutMe: "Mehr über mich →",
+			status: "Offen für Junior-Stellen",
+			locationTitle: "Standort",
+			location: "Berlin, Deutschland",
+			origin: "Ursprünglich aus Bosnien und Herzegowina",
+			stackTitle: "Mein Stack",
+			learningTitle: "Aktuell lerne ich",
+			learning: "Firebase Firestore",
+			learningText:
+				"Datenbanken für komplette Apps mit Login und eigenen Daten.",
+			projectsCount: "Projekte online",
+			reposTitle: "Code auf GitHub",
+			reposText: "Jedes Projekt mit README und Live-Demo.",
 			ctaTitle: "Lass uns sprechen!",
 			ctaText:
 				"Du suchst einen motivierten Junior Frontend Developer in Berlin oder remote? Ich freue mich auf deine Nachricht.",
@@ -51,7 +59,8 @@ const translations = {
 		github: {
 			title: "Neu auf GitHub",
 			allRepos: "Alle Repositories →",
-			intro: "Woran ich gerade arbeite, automatisch geladen über die GitHub API.",
+			intro:
+				"Woran ich gerade arbeite, automatisch geladen über die GitHub API.",
 			loading: "Repositories werden geladen…",
 			error: "GitHub-Repositories konnten nicht geladen werden.",
 			noDescription: "Keine Beschreibung vorhanden.",
@@ -88,12 +97,16 @@ const translations = {
 			errorEmailInvalid: "Bitte gib eine gültige E-Mail-Adresse ein.",
 			errorMessage: "Die Nachricht muss mindestens 10 Zeichen lang sein.",
 			thanks: "Danke",
-			successText: "Deine Nachricht ist angekommen. Ich melde mich so bald wie möglich bei dir.",
+			successText:
+				"Deine Nachricht ist angekommen. Ich melde mich so bald wie möglich bei dir.",
 		},
 		notFound: {
 			title: "Seite nicht gefunden.",
 			text: "Die Seite, die du suchst, existiert nicht oder wurde verschoben.",
 			backHome: "Zur Startseite",
+		},
+		footer: {
+			builtWith: "Gebaut mit React und React Bootstrap",
 		},
 	},
 
@@ -120,13 +133,26 @@ const translations = {
 			aboutText:
 				"Grew up in Bosnia and Herzegovina, settled in Berlin. I enjoy combining design and logic and learn something new every day, from HTML and CSS to React, Next.js and Firebase.",
 			moreAboutMe: "More about me →",
+			status: "Open to junior roles",
+			locationTitle: "Location",
+			location: "Berlin, Germany",
+			origin: "Originally from Bosnia and Herzegovina",
+			stackTitle: "My stack",
+			learningTitle: "Currently learning",
+			learning: "Firebase Firestore",
+			learningText:
+				"Databases for complete apps with login and their own data.",
+			projectsCount: "projects online",
+			reposTitle: "Code on GitHub",
+			reposText: "Every project with a README and a live demo.",
 			ctaTitle: "Let's talk!",
 			ctaText:
 				"Looking for a motivated Junior Frontend Developer in Berlin or remote? I'm looking forward to your message.",
 		},
 		projects: {
 			title: "Projects",
-			intro: "A selection of my projects. Filter by technology to see where I used what.",
+			intro:
+				"A selection of my projects. Filter by technology to see where I used what.",
 			all: "All",
 			empty: "No projects found with this technology.",
 			details: "Details",
@@ -144,7 +170,8 @@ const translations = {
 		github: {
 			title: "Latest on GitHub",
 			allRepos: "All repositories →",
-			intro: "What I'm working on right now, loaded automatically from the GitHub API.",
+			intro:
+				"What I'm working on right now, loaded automatically from the GitHub API.",
 			loading: "Loading repositories…",
 			error: "GitHub repositories could not be loaded.",
 			noDescription: "No description available.",
@@ -181,12 +208,16 @@ const translations = {
 			errorEmailInvalid: "Please enter a valid email address.",
 			errorMessage: "The message must be at least 10 characters long.",
 			thanks: "Thank you",
-			successText: "Your message has arrived. I'll get back to you as soon as possible.",
+			successText:
+				"Your message has arrived. I'll get back to you as soon as possible.",
 		},
 		notFound: {
 			title: "Page not found.",
 			text: "The page you are looking for does not exist or has been moved.",
 			backHome: "Back to home",
+		},
+		footer: {
+			builtWith: "Built with React and React Bootstrap",
 		},
 	},
 };
